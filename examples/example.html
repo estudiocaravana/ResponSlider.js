@@ -5,115 +5,58 @@
   <meta charset="UTF-8">
   <title>ResponSlider.js example</title> 
 
-  <style type="text/css">
+<style type="text/css">
 
-  .slider{  	
-  	height: 500px;  
-  	overflow: hidden;	
-  }
+.mySlider{
+	height: 500px;
+}
 
-  .sliderContainer{
-  	position: relative;
-  	max-width: 100%;
-  	height: 100%;
-  }
-
-  .slide{
-  	height: 100%;
-	float: left;
-	box-sizing: border-box;
-	position: relative;
-	margin-right: 0px;
-	padding: 20px;
-	overflow: hidden;
-  }
-
-  .slide > img {
-  	max-width: 100%;
-  }
-
-  .slide-img > img {
-  	top: 50%;
-  	margin: 0px auto;
-  	display: block;
-  	position: relative;  	
-  }
-
-  .full-width{
-  	width: 100%;
-  }
-
-  .third {
-  	width: 33.333333333%;
-  }
-
-  </style>
+</style>
+  
 </head>
 
 <body>
 
 	<div>
-		<a id="moveToLeft1" href="#">Move to the left</a>
-		<a id="moveToRight1" href="#">Move to the right</a>
+		<a id="moveToLeft" href="#">Move to the left</a>
+		<a id="moveToRight" href="#">Move to the right</a>
 	</div>
 
-	<div class="slider">
-		<div id="sliderContainer1" class="sliderContainer">
-			<div class="slide slide-img full-width">
-				<img src="./img/0.jpg">
-			</div>
-			<div class="slide slide-img full-width">
-				<img src="./img/1.jpg">
-			</div>
-			<div class="slide slide-img full-width">
-				<img src="./img/2.jpg">
-			</div>
-			<div class="slide slide-img full-width">
-				<img src="./img/3.jpg">
-			</div>
-			<div class="slide slide-img full-width">
-				<img src="./img/4.jpg">
-			</div>
-			<div class="slide slide-img full-width">
-				<img src="./img/5.jpg">
-			</div>
-			<div class="slide slide-img full-width">
-				<img src="./img/6.jpg">
-			</div>
-		</div>
+	<div id="slider" class="mySlider">
+		<img src="./img/0.jpg">
+	
+		<img src="./img/1.jpg">
+	
+		<img src="./img/2.jpg">
+	
+		<img src="./img/3.jpg">
+	
+		<img src="./img/4.jpg">
+	
+		<img src="./img/5.jpg">
+	
+		<img src="./img/6.jpg">	
 	</div>
-
-	<br><br>
 
 	<div>
 		<a id="moveToLeft2" href="#">Move to the left</a>
 		<a id="moveToRight2" href="#">Move to the right</a>
 	</div>
 
-	<div class="slider">
-		<div id="sliderContainer2" class="sliderContainer">
-			<div class="slide third">
-				<img src="./img/0.jpg">
-			</div>
-			<div class="slide third">
-				<img src="./img/1.jpg">
-			</div>
-			<div class="slide third">
-				<img src="./img/2.jpg">
-			</div>
-			<div class="slide third">
-				<img src="./img/3.jpg">
-			</div>
-			<div class="slide third">
-				<img src="./img/4.jpg">
-			</div>
-			<div class="slide third">
-				<img src="./img/5.jpg">
-			</div>
-			<div class="slide third">
-				<img src="./img/6.jpg">
-			</div>
-		</div>
+	<div id="slider2" class="mySlider">
+		<img src="./img/0.jpg">
+	
+		<img src="./img/1.jpg">
+	
+		<img src="./img/2.jpg">
+	
+		<img src="./img/3.jpg">
+	
+		<img src="./img/4.jpg">
+	
+		<img src="./img/5.jpg">
+	
+		<img src="./img/6.jpg">	
 	</div>
 
 </body>
@@ -121,12 +64,15 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script type="text/javascript" src="../responSlider.js"></script>
 <script type="text/javascript">
-	var responSlider = com.estudiocaravana.ResponSlider;
 
-	responSlider.init("#sliderContainer1");
+	var responSlider = new ResponSlider("#slider",1, true);
+	$("#moveToLeft").click(function(){responSlider.moveSlide(true)});
+	$("#moveToRight").click(function(){responSlider.moveSlide(false)});
 
-	$("#moveToLeft1").click(function(){responSlider.moveSlide(true)});
-	$("#moveToRight1").click(function(){responSlider.moveSlide(false)});
+	var responSlider2 = new ResponSlider("#slider2",3, true);
+	$("#moveToLeft2").click(function(){responSlider2.moveSlide(true)});
+	$("#moveToRight2").click(function(){responSlider2.moveSlide(false)});
+
 </script>
 
 </html>

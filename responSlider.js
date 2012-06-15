@@ -1,23 +1,59 @@
-var com;
+ResponSlider = function( slider, nElements, justImages){
 
-if (!com) com = {};
+	var that = this;
+	var classPrefix = "responSlider-";
 
-if (!com.estudiocaravana) com.estudiocaravana = {};
+	this.$slider = $(slider);
+	this.$slider.addClass(classPrefix+"slider");
 
-com.estudiocaravana.ResponSlider = {};
-
-(function( ){
-	
-	var _$sliderContainer;
-
-	function init( sliderContainer ){
-		_$sliderContainer 	= 	$(sliderContainer);
-
-		$(window).load(_verticalCenterImages).resize(_verticalCenterImages);
+	var wrapper = '<div class="'+classPrefix+'slide'
+	if (justImages){
+		wrapper += ' '+classPrefix+'slide-img';
 	}
+	wrapper += '" />';
+
+	this.$slider.children().wrap(wrapper);
+
+	var nElements = nElements;
+
+	var _$sliderContainer = $('<div class="'+classPrefix+'sliderContainer" />');
+	this.$slider.children().appendTo(_$sliderContainer);
+	_$sliderContainer.appendTo(this.$slider);
+
+	var $head = $("head");
+	$head.html($head.html() + 
+		'<style type="text/css">\
+			.'+classPrefix+'slider{ \
+		        overflow: hidden;\
+			}\
+			.'+classPrefix+'sliderContainer{\
+				position: relative;\
+				max-width: 100%;\
+				height: 100%;\
+			}\
+			.'+classPrefix+'slide{\
+				height: 100%;\
+				float: left;\
+				box-sizing: border-box;\
+				position: relative;\
+				margin-right: 0px;\
+				padding: 20px;\
+				overflow: hidden;'+
+				'width: '+(100/nElements)+'%'+
+			'}\
+			.'+classPrefix+'slide > img {\
+				max-width: 100%;\
+			}\
+			.'+classPrefix+'slide-img > img {\
+				top: 50%;\
+				margin: 0px auto;\
+				display: block;\
+				position: relative;\
+			}\
+		</style>');
 
 	function _verticalCenterImages(){
-		_$sliderContainer.find("img").map(function(){
+		that.$slider.find('.'+classPrefix+"slide-img > img").map(function(){
 			var $this = $(this);
 			$this.css({
 				"margin-top" : ($this.outerHeight() / 2) * (-1)
@@ -25,7 +61,7 @@ com.estudiocaravana.ResponSlider = {};
 		});
 	}
 	
-	function moveSlide( direction ){
+	this.moveSlide = function( direction ){
 		var $slides 			=	_$sliderContainer.children(),
 			selectedPos 		= 	direction ? 0 : ($slides.length - 1),		
 			horizontalOffset 	= 	$slides.outerWidth(true),
@@ -59,12 +95,8 @@ com.estudiocaravana.ResponSlider = {};
 
 		}
 	}
+
+	_verticalCenterImages();
+	$(window).resize(_verticalCenterImages);
 	
-	var ns = com.estudiocaravana.ResponSlider;
-	ns.init = init;
-	ns.moveSlide = moveSlide;
-	
-})();
-
-
-
+};
