@@ -12,8 +12,9 @@ ResponSlider = function( slider, userOptions){
 		_effects = {},		
 		_options = 
 			{
-				nElements: 1,
-				effect: 'fade',
+				visibleSlides: 1,
+				movingSlides: 1,
+				effect: 'slide',
 				previousSlideAction: null,
 				nextSlideAction: null,
 				mediaQueries: null,
@@ -65,7 +66,7 @@ ResponSlider = function( slider, userOptions){
 			}
 		}
 		else{
-			slideWidthStyle += slideSelector+' { width: '+(100/_options.nElements)+'% }';
+			slideWidthStyle += slideSelector+' { width: '+(100/_options.visibleSlides)+'% }';
 		}
 
 		slideWidthStyle += '</style>';
@@ -74,34 +75,47 @@ ResponSlider = function( slider, userOptions){
 	}
 
 	function _initEffects(){
-		_effects.slide = function(showNextSlide){
+		_effects.none = function(showNextSlide, movingSlides){
 			var $slides 			=	_$sliderContainer.children(),
-				selectedPos 		= 	showNextSlide ? 0 : ($slides.length - 1),		
+				$selectedSlides		= 	showNextSlide ? $slides.slice(0,movingSlides) : $slides.slice(-1 * movingSlides);
+
+			showNextSlide ? _$sliderContainer.append($selectedSlides) : _$sliderContainer.prepend($selectedSlides);
+		}
+
+
+		_effects.slide = function(showNextSlide, movingSlides){
+			var $slides 			=	_$sliderContainer.children(),
 				horizontalOffset 	= 	$slides.outerWidth(true),
-				posContainer 		= 	showNextSlide ? horizontalOffset : 0,
-				$selectedSlide 		= 	$($slides[selectedPos]);
+				$selectedSlides		= 	showNextSlide ? $slides.slice(0,movingSlides) : $slides.slice(-1 * movingSlides),
+				startPosContainer 	= 	showNextSlide ? (horizontalOffset * movingSlides) : 0,
+				endPosContainer		= 	(!showNextSlide) ? (horizontalOffset * movingSlides) : 0,
+				maxZIndex			=	parseInt($slides.css("z-index"));
 
 			if (showNextSlide){
-				_$sliderContainer.append($selectedSlide);		
+				_$sliderContainer.append($selectedSlides);		
 			}
 
-			_$sliderContainer.css("left", posContainer + "px");
+			_$sliderContainer.css("left", startPosContainer + "px");
 
-			$selectedSlide.css({
-				position: "absolute",
-				left: (-1 * horizontalOffset) + "px",
-				"z-index": parseInt($slides.css("z-index")) + 1
-			});				
+			$selectedSlides.each( 
+				function(i){
+					$(this).css({
+						position: "absolute",
+						left: (horizontalOffset * (i - movingSlides)) + "px",
+						"z-index": maxZIndex + 1
+					});
+				}
+			);				
 			
 			_$sliderContainer.animate({
-				left: (horizontalOffset - posContainer) + "px"
+				left: endPosContainer + "px"
 			}, _options.transitionTime
 			,function(){
 				if (!showNextSlide){
-					_$sliderContainer.prepend($selectedSlide);
+					_$sliderContainer.prepend($selectedSlides);
 				}
 				_$sliderContainer.css("left", "");
-				$selectedSlide.css({
+				$selectedSlides.css({
 					position: "",
 					left: "",
 					"z-index": ""
@@ -109,10 +123,9 @@ ResponSlider = function( slider, userOptions){
 			});
 		}
 
-		_effects.fade = function(showNextSlide){
+		_effects.fade = function(showNextSlide, movingSlides){
 			var $slides 			=	_$sliderContainer.children(),
-				selectedPos 		= 	showNextSlide ? 0 : ($slides.length - 1),		
-				$selectedSlide 		= 	$($slides[selectedPos]),
+				$selectedSlides		= 	showNextSlide ? $slides.slice(0,movingSlides) : $slides.slice(-1 * movingSlides),
 				originalOpacity		=	_$sliderContainer.css("opacity");
 
 			originalOpacity	= !!(originalOpacity) ? originalOpacity : 1;
@@ -121,12 +134,8 @@ ResponSlider = function( slider, userOptions){
 				opacity: 0
 			}, _options.transitionTime / 2,
 			function(){
-				if (showNextSlide){
-					_$sliderContainer.append($selectedSlide);
-				}
-				else{
-					_$sliderContainer.prepend($selectedSlide);
-				}
+				showNextSlide ? _$sliderContainer.append($selectedSlides) : _$sliderContainer.prepend($selectedSlides);
+				
 				_$sliderContainer.animate({
 					opacity: originalOpacity
 				}, _options.transitionTime / 2, function(){
@@ -150,7 +159,10 @@ ResponSlider = function( slider, userOptions){
 	 */
 	this.slideTransition = function( showNextSlide ){		
 		if (_$sliderContainer.filter(":animated").length == 0){
-			_effects[_options.effect](showNextSlide);
+
+			var visibleSlides = Math.ceil(_$sliderContainer.outerWidth() / _$sliderContainer.find('.responSlider-slide').outerWidth());
+
+			_effects[_options.effect](showNextSlide, Math.min(_options.movingSlides, visibleSlides));
 		}
 	}
 

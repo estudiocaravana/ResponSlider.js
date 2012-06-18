@@ -101,7 +101,8 @@
 <script type="text/javascript">
 
 	var responSlider = new ResponSlider("#slider", {
-		previousSlideAction: "#previousSlide",
+		movingSlides: 3,
+		previousSlideAction: "#previousSlide",		
 		nextSlideAction: "#nextSlide",
 		horizontallyCentered: true, 
 		verticallyCentered: true, 
@@ -112,7 +113,9 @@
 	});	
 
 	var responSlider2 = new ResponSlider("#slider2", {
-		nElements: 3, 
+		visibleSlides: 3,
+		effect: 'fade',
+		movingSlides: 3, 
 		verticallyCentered: true, 
 		previousSlideAction: "#previousSlide2", 
 		nextSlideAction: "#nextSlide2",
@@ -120,8 +123,14 @@
 	});
 
 	var responSlider3 = new ResponSlider("#slider3", {
+		effect: 'none',
 		previousSlideAction: "#previousSlide3", 
-		nextSlideAction: "#nextSlide3"
+		nextSlideAction: "#nextSlide3",
+		mediaQueries: {
+			"@media screen and (min-width: 768px)": 3,
+			"@media screen and (min-width: 512px) and (max-width: 768px)": 2,
+			"@media screen and (max-width: 512px)": 1,
+		}
 	});
 
 </script>

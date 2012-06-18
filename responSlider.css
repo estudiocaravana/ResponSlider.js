@@ -17,6 +17,7 @@
 
 .responSlider-slide > img {
 	max-width: 100%;
+	height: auto;
 }
 
 .responSlider-horizontallyCentered {
