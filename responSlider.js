@@ -1,59 +1,36 @@
-ResponSlider = function( slider, nElements, justImages){
+ResponSlider = function( slider, userOptions){
 
 	var that = this;
-	var classPrefix = "responSlider-";
+	var options = {
+		nElements: 1,
+		previousSlideAction: null,
+		nextSlideAction: null,
+		verticalCentered: false,
+	}
+
+	if (!!userOptions){
+		for (var op in options){
+			if (!!userOptions[op]){
+				options[op] = userOptions[op];
+			}
+		}	
+	}
 
 	this.$slider = $(slider);
-	this.$slider.addClass(classPrefix+"slider");
+	this.$slider.addClass('responSlider-slider');
 
-	var wrapper = '<div class="'+classPrefix+'slide'
-	if (justImages){
-		wrapper += ' '+classPrefix+'slide-img';
+	var sliderChilden = this.$slider.children();		
+	if (options.verticalCentered){
+		sliderChilden.addClass("responSlider-verticalCentered");
 	}
-	wrapper += '" />';
+	sliderChilden
+		.wrapAll('<div class="responSlider-sliderContainer" />')
+		.wrap('<div class="responSlider-slide" style="width: '+(100/options.nElements)+'%" />');
 
-	this.$slider.children().wrap(wrapper);
-
-	var nElements = nElements;
-
-	var _$sliderContainer = $('<div class="'+classPrefix+'sliderContainer" />');
-	this.$slider.children().appendTo(_$sliderContainer);
-	_$sliderContainer.appendTo(this.$slider);
-
-	var $head = $("head");
-	$head.html($head.html() + 
-		'<style type="text/css">\
-			.'+classPrefix+'slider{ \
-		        overflow: hidden;\
-			}\
-			.'+classPrefix+'sliderContainer{\
-				position: relative;\
-				max-width: 100%;\
-				height: 100%;\
-			}\
-			.'+classPrefix+'slide{\
-				height: 100%;\
-				float: left;\
-				box-sizing: border-box;\
-				position: relative;\
-				margin-right: 0px;\
-				padding: 20px;\
-				overflow: hidden;'+
-				'width: '+(100/nElements)+'%'+
-			'}\
-			.'+classPrefix+'slide > img {\
-				max-width: 100%;\
-			}\
-			.'+classPrefix+'slide-img > img {\
-				top: 50%;\
-				margin: 0px auto;\
-				display: block;\
-				position: relative;\
-			}\
-		</style>');
+	var _$sliderContainer = this.$slider.find('.responSlider-sliderContainer');
 
 	function _verticalCenterImages(){
-		that.$slider.find('.'+classPrefix+"slide-img > img").map(function(){
+		that.$slider.find('.responSlider-verticalCentered').map(function(){
 			var $this = $(this);
 			$this.css({
 				"margin-top" : ($this.outerHeight() / 2) * (-1)
@@ -89,8 +66,12 @@ ResponSlider = function( slider, nElements, justImages){
 				if (!direction){
 					_$sliderContainer.prepend($selectedSlide);
 				}
-				_$sliderContainer.attr("style","");	
-				$selectedSlide.attr("style","");						
+				_$sliderContainer.css("left", "");
+				$selectedSlide.css({
+					position: "",
+					left: "",
+					"z-index": ""
+				});
 			});
 
 		}
@@ -98,5 +79,8 @@ ResponSlider = function( slider, nElements, justImages){
 
 	_verticalCenterImages();
 	$(window).resize(_verticalCenterImages);
+
+	$(options.previousSlideAction).click(function(ev){ ev.preventDefault(); that.moveSlide(false)});
+	$(options.nextSlideAction).click(function(ev){ ev.preventDefault(); that.moveSlide(true)});
 	
 };
