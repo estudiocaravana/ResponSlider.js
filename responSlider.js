@@ -5,7 +5,10 @@ ResponSlider = function( slider, userOptions){
 		nElements: 1,
 		previousSlideAction: null,
 		nextSlideAction: null,
-		verticalCentered: false,
+		mediaQueries: null,
+		horizontallyCentered: false,
+		verticallyCentered: false,
+		transitionTime: 800
 	}
 
 	if (!!userOptions){
@@ -17,20 +20,44 @@ ResponSlider = function( slider, userOptions){
 	}
 
 	this.$slider = $(slider);
+
 	this.$slider.addClass('responSlider-slider');
 
-	var sliderChilden = this.$slider.children();		
-	if (options.verticalCentered){
-		sliderChilden.addClass("responSlider-verticalCentered");
+	var sliderChilden = this.$slider.children();
+	if (options.horizontallyCentered){
+		sliderChilden.addClass("responSlider-horizontallyCentered");
+	}		
+	if (options.verticallyCentered){
+		sliderChilden.addClass("responSlider-verticallyCentered");
 	}
+
+	var sliderContainerID = 'responSlider-sliderContainer-'+$('.responSlider-sliderContainer').length;
+
 	sliderChilden
-		.wrapAll('<div class="responSlider-sliderContainer" />')
-		.wrap('<div class="responSlider-slide" style="width: '+(100/options.nElements)+'%" />');
+		.wrapAll('<div id="'+sliderContainerID+'" class="responSlider-sliderContainer" />')		
+		.wrap('<div class="responSlider-slide" />');
 
 	var _$sliderContainer = this.$slider.find('.responSlider-sliderContainer');
 
+	var slideSelector = '#'+sliderContainerID+' > .responSlider-slide';
+
+	var slideWidthStyle = '<style type="text/css">';
+
+	if (options.mediaQueries){		
+		for (var mq in options.mediaQueries){
+			slideWidthStyle += mq + '{ '+slideSelector+' { width: '+(100/options.mediaQueries[mq])+'% } }';
+		}
+	}
+	else{
+		slideWidthStyle += slideSelector+' { width: '+(100/options.nElements)+'% }';
+	}
+
+	slideWidthStyle += '</style>';
+
+	$("head").append(slideWidthStyle);
+
 	function _verticalCenterImages(){
-		that.$slider.find('.responSlider-verticalCentered').map(function(){
+		that.$slider.find('.responSlider-verticallyCentered').map(function(){
 			var $this = $(this);
 			$this.css({
 				"margin-top" : ($this.outerHeight() / 2) * (-1)
@@ -61,7 +88,7 @@ ResponSlider = function( slider, userOptions){
 			
 			_$sliderContainer.animate({
 				left: (horizontalOffset - posContainer) + "px"
-			}, 800
+			}, options.transitionTime
 			,function(){
 				if (!direction){
 					_$sliderContainer.prepend($selectedSlide);

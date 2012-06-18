@@ -12,6 +12,11 @@
 	height: 500px;
 }
 
+.responSlider-slide{
+	box-sizing: border-box;
+	padding: 20px;
+}
+
 </style>
   
 </head>
@@ -96,16 +101,22 @@
 <script type="text/javascript">
 
 	var responSlider = new ResponSlider("#slider", {
-		nElements: 5,
 		previousSlideAction: "#previousSlide",
-		nextSlideAction: "#nextSlide"
+		nextSlideAction: "#nextSlide",
+		horizontallyCentered: true, 
+		verticallyCentered: true, 
+		mediaQueries: {
+			"@media screen and (min-width: 768px)": 3,
+			"@media screen and (max-width: 768px)": 1,
+		}
 	});	
 
 	var responSlider2 = new ResponSlider("#slider2", {
 		nElements: 3, 
-		verticalCentered: true, 
+		verticallyCentered: true, 
 		previousSlideAction: "#previousSlide2", 
-		nextSlideAction: "#nextSlide2"
+		nextSlideAction: "#nextSlide2",
+		transitionTime: 500
 	});
 
 	var responSlider3 = new ResponSlider("#slider3", {
