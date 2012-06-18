@@ -1,80 +1,87 @@
 ResponSlider = function( slider, userOptions){
 
-	var that = this;
-	var options = {
-		nElements: 1,
-		previousSlideAction: null,
-		nextSlideAction: null,
-		mediaQueries: null,
-		horizontallyCentered: false,
-		verticallyCentered: false,
-		transitionTime: 800
-	}
+	/*
+	 * Auxiliar properties
+	 */
+	var that = this;		
 
-	if (!!userOptions){
-		for (var op in options){
-			if (!!userOptions[op]){
-				options[op] = userOptions[op];
-			}
-		}	
-	}
+	/*
+	 * Private properties
+	 */
+	var _$sliderContainer, 
+		_effects = {},		
+		_options = 
+			{
+				nElements: 1,
+				effect: 'fade',
+				previousSlideAction: null,
+				nextSlideAction: null,
+				mediaQueries: null,
+				horizontallyCentered: false,
+				verticallyCentered: false,
+				transitionTime: 800
+			};
 
+	/*
+	 * Public properties
+	 */
 	this.$slider = $(slider);
 
-	this.$slider.addClass('responSlider-slider');
+	/*
+	 * Private methods
+	 */
+	function _initSlider(){
+		var slideSelector,
+			sliderChilden,
+			sliderContainerID,
+			sliderSelector,
+			slideWidthStyle;
 
-	var sliderChilden = this.$slider.children();
-	if (options.horizontallyCentered){
-		sliderChilden.addClass("responSlider-horizontallyCentered");
-	}		
-	if (options.verticallyCentered){
-		sliderChilden.addClass("responSlider-verticallyCentered");
-	}
+		that.$slider.addClass('responSlider-slider');
 
-	var sliderContainerID = 'responSlider-sliderContainer-'+$('.responSlider-sliderContainer').length;
-
-	sliderChilden
-		.wrapAll('<div id="'+sliderContainerID+'" class="responSlider-sliderContainer" />')		
-		.wrap('<div class="responSlider-slide" />');
-
-	var _$sliderContainer = this.$slider.find('.responSlider-sliderContainer');
-
-	var slideSelector = '#'+sliderContainerID+' > .responSlider-slide';
-
-	var slideWidthStyle = '<style type="text/css">';
-
-	if (options.mediaQueries){		
-		for (var mq in options.mediaQueries){
-			slideWidthStyle += mq + '{ '+slideSelector+' { width: '+(100/options.mediaQueries[mq])+'% } }';
+		sliderChilden = that.$slider.children();
+		if (_options.horizontallyCentered){
+			sliderChilden.addClass("responSlider-horizontallyCentered");
+		}		
+		if (_options.verticallyCentered){
+			sliderChilden.addClass("responSlider-verticallyCentered");
 		}
+
+		sliderContainerID = 'responSlider-sliderContainer-'+$('.responSlider-sliderContainer').length;
+
+		sliderChilden
+			.wrapAll('<div id="'+sliderContainerID+'" class="responSlider-sliderContainer" />')		
+			.wrap('<div class="responSlider-slide" />');
+
+		_$sliderContainer = that.$slider.find('.responSlider-sliderContainer');
+
+		slideSelector = '#'+sliderContainerID+' > .responSlider-slide';
+
+		slideWidthStyle = '<style type="text/css">';
+
+		if (_options.mediaQueries){		
+			for (var mq in _options.mediaQueries){
+				slideWidthStyle += mq + '{ '+slideSelector+' { width: '+(100/_options.mediaQueries[mq])+'% } }';
+			}
+		}
+		else{
+			slideWidthStyle += slideSelector+' { width: '+(100/_options.nElements)+'% }';
+		}
+
+		slideWidthStyle += '</style>';
+
+		$("head").append(slideWidthStyle);
 	}
-	else{
-		slideWidthStyle += slideSelector+' { width: '+(100/options.nElements)+'% }';
-	}
 
-	slideWidthStyle += '</style>';
+	function _initEffects(){
+		_effects.slide = function(showNextSlide){
+			var $slides 			=	_$sliderContainer.children(),
+				selectedPos 		= 	showNextSlide ? 0 : ($slides.length - 1),		
+				horizontalOffset 	= 	$slides.outerWidth(true),
+				posContainer 		= 	showNextSlide ? horizontalOffset : 0,
+				$selectedSlide 		= 	$($slides[selectedPos]);
 
-	$("head").append(slideWidthStyle);
-
-	function _verticalCenterImages(){
-		that.$slider.find('.responSlider-verticallyCentered').map(function(){
-			var $this = $(this);
-			$this.css({
-				"margin-top" : ($this.outerHeight() / 2) * (-1)
-			});
-		});
-	}
-	
-	this.moveSlide = function( direction ){
-		var $slides 			=	_$sliderContainer.children(),
-			selectedPos 		= 	direction ? 0 : ($slides.length - 1),		
-			horizontalOffset 	= 	$slides.outerWidth(true),
-			posContainer 		= 	direction ? horizontalOffset : 0,
-			$selectedSlide 		= 	$($slides[selectedPos]);
-
-		if (_$sliderContainer.filter(":animated").length == 0){
-
-			if (direction){
+			if (showNextSlide){
 				_$sliderContainer.append($selectedSlide);		
 			}
 
@@ -88,9 +95,9 @@ ResponSlider = function( slider, userOptions){
 			
 			_$sliderContainer.animate({
 				left: (horizontalOffset - posContainer) + "px"
-			}, options.transitionTime
+			}, _options.transitionTime
 			,function(){
-				if (!direction){
+				if (!showNextSlide){
 					_$sliderContainer.prepend($selectedSlide);
 				}
 				_$sliderContainer.css("left", "");
@@ -100,14 +107,74 @@ ResponSlider = function( slider, userOptions){
 					"z-index": ""
 				});
 			});
+		}
 
+		_effects.fade = function(showNextSlide){
+			var $slides 			=	_$sliderContainer.children(),
+				selectedPos 		= 	showNextSlide ? 0 : ($slides.length - 1),		
+				$selectedSlide 		= 	$($slides[selectedPos]),
+				originalOpacity		=	_$sliderContainer.css("opacity");
+
+			originalOpacity	= !!(originalOpacity) ? originalOpacity : 1;
+
+			_$sliderContainer.animate({
+				opacity: 0
+			}, _options.transitionTime / 2,
+			function(){
+				if (showNextSlide){
+					_$sliderContainer.append($selectedSlide);
+				}
+				else{
+					_$sliderContainer.prepend($selectedSlide);
+				}
+				_$sliderContainer.animate({
+					opacity: originalOpacity
+				}, _options.transitionTime / 2, function(){
+					_$sliderContainer.attr("style","");
+				});
+			});
 		}
 	}
 
-	_verticalCenterImages();
-	$(window).resize(_verticalCenterImages);
+	function _verticalCenterImages(){
+		that.$slider.find('.responSlider-verticallyCentered').map(function(){
+			var $this = $(this);
+			$this.css({
+				"margin-top" : ($this.outerHeight() / 2) * (-1)
+			});
+		});
+	}
 
-	$(options.previousSlideAction).click(function(ev){ ev.preventDefault(); that.moveSlide(false)});
-	$(options.nextSlideAction).click(function(ev){ ev.preventDefault(); that.moveSlide(true)});
+	/*
+	 * Public methods
+	 */
+	this.slideTransition = function( showNextSlide ){		
+		if (_$sliderContainer.filter(":animated").length == 0){
+			_effects[_options.effect](showNextSlide);
+		}
+	}
+
+
+	/*
+	 * Slider initialization
+	 */
+	if (!!userOptions){
+		for (var op in _options){
+			if (!!userOptions[op]){
+				_options[op] = userOptions[op];
+			}
+		}	
+	}
+
+	_initSlider();
+	_initEffects();
+
+	if (_options.verticallyCentered){
+		_verticalCenterImages();
+		$(window).resize(_verticalCenterImages);
+	}	
+
+	$(_options.previousSlideAction).click(function(ev){ ev.preventDefault(); that.slideTransition(false)});
+	$(_options.nextSlideAction).click(function(ev){ ev.preventDefault(); that.slideTransition(true)});
 	
 };
