@@ -1,0 +1,781 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"out",
+				"outerWidth"
+			],
+			[
+				"respo",
+				"responSlider-slide"
+			],
+			[
+				"sl",
+				"sliderContainer"
+			],
+			[
+				"mo",
+				"movingSlides"
+			],
+			[
+				"m",
+				"movingElements"
+			],
+			[
+				"ma",
+				"maxZIndex"
+			],
+			[
+				"_ini",
+				"_initEffects"
+			],
+			[
+				"sliderContainer",
+				"sliderContainerID"
+			],
+			[
+				"sli",
+				"sliderChilden"
+			],
+			[
+				"op",
+				"opacity"
+			],
+			[
+				"o",
+				"originalOpacity"
+			],
+			[
+				"selec",
+				"selectedPos"
+			],
+			[
+				"resp",
+				"responSlider-slide"
+			],
+			[
+				"app",
+				"append  (function)"
+			],
+			[
+				"l",
+				"length  (variable)"
+			],
+			[
+				"ver",
+				"verticalCentered"
+			],
+			[
+				"wrap",
+				"wrapAll  (function)"
+			],
+			[
+				"respon",
+				"responSlider-slider"
+			],
+			[
+				"nex",
+				"nextSlide"
+			],
+			[
+				"prev",
+				"previousSlide  (argument)"
+			],
+			[
+				"cl",
+				"classPrefix"
+			],
+			[
+				"wr",
+				"wrapper"
+			],
+			[
+				"add",
+				"addClass  (function)"
+			],
+			[
+				"appen",
+				"appendTo  (function)"
+			],
+			[
+				"chil",
+				"children  (function)"
+			],
+			[
+				"ou",
+				"outerWidth  (function)"
+			],
+			[
+				"slider",
+				"sliderContainer"
+			],
+			[
+				"re",
+				"relative"
+			],
+			[
+				"inc",
+				"include"
+			],
+			[
+				"max-",
+				"max-width:   (property)"
+			],
+			[
+				"per",
+				"perfil"
+			],
+			[
+				"pos",
+				"position	position: type"
+			],
+			[
+				"ri",
+				"rickshaw"
+			],
+			[
+				"p",
+				"push  (function)"
+			],
+			[
+				"hero",
+				"hero-unit"
+			],
+			[
+				"font",
+				"font	font-size: size"
+			],
+			[
+				"fon",
+				"font	font-style: normal/italic/oblique"
+			],
+			[
+				"se",
+				"section	Tag"
+			],
+			[
+				"bo",
+				"bootstrap"
+			],
+			[
+				"left",
+				"leftContainer"
+			],
+			[
+				"av",
+				"avanza"
+			],
+			[
+				"sele",
+				"selectedSlide"
+			],
+			[
+				"box-s",
+				"box-sizing:   (property)"
+			],
+			[
+				"margin-",
+				"margin-right"
+			],
+			[
+				"s",
+				"selectedSlide"
+			],
+			[
+				"ficha",
+				"fichaVisible"
+			],
+			[
+				"fich",
+				"fichaVisible"
+			],
+			[
+				"scro",
+				"scrollTop"
+			],
+			[
+				"sc",
+				"scrollTop  (function)"
+			],
+			[
+				"he",
+				"height"
+			],
+			[
+				"r",
+				"relative"
+			],
+			[
+				"ba",
+				"background	background-color: transparent"
+			],
+			[
+				"repa",
+				"replaceWith  (function)"
+			],
+			[
+				"inser",
+				"insertPoint"
+			],
+			[
+				"eleme",
+				"elementPosition"
+			],
+			[
+				"ins",
+				"insertPoint"
+			],
+			[
+				"pa",
+				"parentNode"
+			],
+			[
+				"elem",
+				"element"
+			],
+			[
+				"text",
+				"textContent"
+			],
+			[
+				"tag",
+				"tagName"
+			],
+			[
+				"path",
+				"pathElement"
+			],
+			[
+				"ele",
+				"elementPosition"
+			],
+			[
+				"child",
+				"childNodes"
+			],
+			[
+				"node",
+				"nodePosition"
+			],
+			[
+				"no",
+				"nodePosition"
+			],
+			[
+				"chi",
+				"childNodes"
+			],
+			[
+				"parent",
+				"parentNode"
+			],
+			[
+				"paren",
+				"parentNode"
+			],
+			[
+				"ERR",
+				"errata_list"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"erra",
+				"errata_list"
+			],
+			[
+				"h",
+				"h1"
+			],
+			[
+				"b",
+				"btn"
+			],
+			[
+				"li",
+				"link	Tag"
+			],
+			[
+				"name",
+				"ConfigurationManager"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "responSlider.js",
+			"settings":
+			{
+				"buffer_size": 5083,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "examples/example.html",
+			"settings":
+			{
+				"buffer_size": 5300,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "responSlider.css",
+			"settings":
+			{
+				"buffer_size": 479,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"Snippet: ",
+				"Snippet: html"
+			],
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
+			[
+				"css",
+				"Set Syntax: CSS"
+			],
+			[
+				"show",
+				"Show TODOs in project and open files"
+			],
+			[
+				"TO",
+				"Show TODOs in project and open files"
+			],
+			[
+				"tod",
+				"Show TODOs in project and open files"
+			]
+		],
+		"width": 575.0
+	},
+	"console":
+	{
+		"height": 115.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/edupoch/Desktop/1206181200_INTER854",
+		"/Users/edupoch/Documents/workspace/ResponSlider.js/responSlider.css",
+		"/Users/edupoch/Documents/workspace/ResponSlider.js/example.html",
+		"/Users/edupoch/Documents/workspace/ResponSlider.js/estudiocaravana_slider.js",
+		"/Users/edupoch/Library/Application Support/Sublime Text 2/Packages/User/htmlSnippet",
+		"/Users/edupoch/Documents/workspace/ResponSlider.js/responSlider.sublime-project",
+		"/Users/edupoch/Documents/workspace/ResponSlider.js/.gitignore",
+		"/Users/edupoch/Documents/workspace/triatlon/wp-content/themes/triatlon/index.php",
+		"/Users/edupoch/Documents/workspace/triatlon/wp-content/themes/triatlon/index_original.php",
+		"/Users/edupoch/Documents/workspace/triatlon/wp-content/themes/triatlon/header.php",
+		"/Users/edupoch/Documents/workspace/triatlon/wp-content/themes/triatlon/functions.php",
+		"/Users/edupoch/Documents/workspace/triatlon/wp-content/themes/triatlon/sftp-config.json",
+		"/Users/edupoch/Documents/workspace/garladas/estilo.css",
+		"/Users/edupoch/Documents/workspace/garladas/index.php",
+		"/Users/edupoch/Documents/workspace/garladas/js/garlo.js",
+		"/Users/edupoch/Documents/workspace/garladas/reset.css",
+		"/Users/edupoch/Documents/workspace/garlo/estilo_pantallazo.css",
+		"/Users/edupoch/Documents/workspace/garlo/home.html",
+		"/Users/edupoch/Documents/workspace/garlo/index.html",
+		"/Users/edupoch/Documents/workspace/garlo/reset.css",
+		"/Users/edupoch/Documents/workspace/garlo/sftp-config.json",
+		"/Users/edupoch/Documents/workspace/garladas/sftp-config.json",
+		"/Users/edupoch/Desktop/ZendFramework-1.11.11/INSTALL.txt",
+		"/Users/edupoch/Documents/estudiocaravana/Wordpress de prueba/wordpress/wp-content/themes/responsive-fabulatorio/single-ec_publicacion.php",
+		"/Users/edupoch/Documents/workspace/desescribir/desescribir.sublime-project",
+		"/Users/edupoch/Documents/estudiocaravana/github/wp errata/admin/errata_list.php",
+		"/Users/edupoch/Documents/estudiocaravana/github/wp errata/wp_errata.php",
+		"/Users/edupoch/Documents/estudiocaravana/github/wp errata/model/classes/Errata.php",
+		"/Users/edupoch/Documents/estudiocaravana/github/wp errata/model/wp_model.php",
+		"/Users/edupoch/Documents/estudiocaravana/github/wp errata/view/elements.php",
+		"/Users/edupoch/Documents/estudiocaravana/github/wp errata/util.php",
+		"/Users/edupoch/Documents/estudiocaravana/github/wp errata/view/js/errata.js",
+		"/Users/edupoch/Documents/estudiocaravana/github/wp errata/view/newErrata.php",
+		"/Users/edupoch/Documents/estudiocaravana/github/wp errata/view/elements.css",
+		"/Users/edupoch/Documents/estudiocaravana/github/wp errata/.gitignore",
+		"/Users/edupoch/Documents/estudiocaravana/github/wp errata/sftp-config.json",
+		"/Users/edupoch/Documents/estudiocaravana/github/wp errata/model/model.php",
+		"/Users/edupoch/Documents/estudiocaravana/github/wp errata/admin/install.php",
+		"/Users/edupoch/Documents/estudiocaravana/github/errata/model/classes/ConfigurationManager.php",
+		"/Users/edupoch/Documents/estudiocaravana/github/errata/admin/.htaccess",
+		"/Users/edupoch/Documents/estudiocaravana/github/errata/admin/structure.php",
+		"/Users/edupoch/Documents/estudiocaravana/github/errata/admin/errataList.php",
+		"/Users/edupoch/Documents/estudiocaravana/github/errata/admin/admin-style.css",
+		"/Users/edupoch/Documents/estudiocaravana/github/mini-web-monsters/README",
+		"/Users/edupoch/Downloads/set_icon_path/manifest.json",
+		"/Users/edupoch/Documents/estudiocaravana/github/errata/admin/header.php",
+		"/Users/edupoch/Documents/estudiocaravana/github/errata/admin/bootstrap/css/bootstrap.css",
+		"/Users/edupoch/Documents/estudiocaravana/github/errata/admin/footer.php",
+		"/Users/edupoch/Documents/estudiocaravana/github/errata/index.html",
+		"/Users/edupoch/Documents/estudiocaravana/github/errata/admin/bootstrap/css/index.php",
+		"/Users/edupoch/Documents/estudiocaravana/github/errata/admin/bootstrap/css/index.html",
+		"/Applications/MAMP/logs/php_error.log",
+		"/Users/edupoch/Music/Audionews/reFX.quadraSID.AU.VSTi.v1.6.2.MAC.OSX.UB.MERRY.XMAS-ASSiGN/ASSiGN.nfo",
+		"/Users/edupoch/Documents/estudiocaravana/Prestashop de prueba/prestashop_1.4.5.1/modules/lectorSINLI/SINLIs/procesados/1201181815_1201131241_INTER625",
+		"/Users/edupoch/Documents/estudiocaravana/Prestashop de prueba/prestashop_1.4.5.1/modules/lectorSINLI/SINLIs/procesados/INTER001",
+		"/Users/edupoch/Documents/estudiocaravana/github/errata/plugin/js/errata.js",
+		"/Users/edupoch/Documents/estudiocaravana/github/errata/plugin/elements.php",
+		"/Users/edupoch/Documents/estudiocaravana/github/errata/plugin/elements.css",
+		"/Users/edupoch/Documents/estudiocaravana/github/errata/model/model.php",
+		"/Users/edupoch/Documents/estudiocaravana/github/errata/admin/install.php",
+		"/Users/edupoch/Documents/estudiocaravana/github/errata/admin/error.php",
+		"/Users/edupoch/Documents/estudiocaravana/github/errata/model/errata.log",
+		"/Users/edupoch/Documents/estudiocaravana/github/errata/prueba.php",
+		"/Users/edupoch/Documents/estudiocaravana/github/errata/admin/.httaccess",
+		"/Users/edupoch/Documents/estudiocaravana/Prestashop de prueba/prestashop_1.4.5.1/modules/lectorSINLI/SINLIs/procesados/1201131242_INTER635",
+		"/Users/edupoch/Documents/estudiocaravana/Prestashop de prueba/prestashop_1.4.5.1/modules/lectorSINLI/SINLIs/procesados/1201131241_INTER625",
+		"/Users/edupoch/Documents/estudiocaravana/Prestashop de prueba/prestashop_1.4.5.1/modules/lectorSINLI/SINLIs/procesados/1201131241_INTER626",
+		"/Users/edupoch/Documents/estudiocaravana/Prestashop de prueba/prestashop_1.4.5.1/modules/lectorSINLI/SINLIs/procesados/1201131241_INTER627",
+		"/Users/edupoch/Documents/estudiocaravana/Prestashop de prueba/prestashop_1.4.5.1/modules/lectorSINLI/SINLIs/procesados/1201131241_INTER628",
+		"/Users/edupoch/Documents/estudiocaravana/Prestashop de prueba/prestashop_1.4.5.1/modules/lectorSINLI/SINLIs/procesados/1201131241_INTER624",
+		"/Users/edupoch/Documents/estudiocaravana/Prestashop de prueba/prestashop_1.4.5.1/modules/lectorSINLI/SINLIs/sin_procesar/INTER624",
+		"/Users/edupoch/Documents/estudiocaravana/github/errata/model/conf.xml",
+		"/Users/edupoch/Documents/estudiocaravana/github/errata/plugin/newErrata.php",
+		"/Users/edupoch/Documents/estudiocaravana/github/errata/model/util.php",
+		"/Users/edupoch/Documents/estudiocaravana/github/errata/model/classes/Errata.php",
+		"/Users/edupoch/Documents/estudiocaravana/github/errata/plugin/elements.html",
+		"/Users/edupoch/Documents/estudiocaravana/Alfonso de la Vega/web/widget/hl-twitter/hl_twitter_widget.php",
+		"/Users/edupoch/Desktop/hl-twitter/hl_twitter_widget.php",
+		"/Users/edupoch/Desktop/hl-twitter/widget.php",
+		"/Users/edupoch/Desktop/hl-twitter/functions.php",
+		"/Users/edupoch/Desktop/hl-twitter/api/EpiTwitter.php"
+	],
+	"find":
+	{
+		"height": 33.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"/Users/edupoch/Documents/estudiocaravana/github/errata",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"visible",
+			"nElements",
+			"posContainer",
+			"movingSlides",
+			"movingElements",
+			"that._options",
+			"options",
+			"this.$slider",
+			"moveSlide",
+			"direction",
+			"verticalCe",
+			"verticalC",
+			"Move to the right",
+			"Move to the left",
+			"verticalCentered",
+			"_$sliderContainer",
+			"$slider",
+			"slider",
+			"img",
+			"classPre",
+			"'+classPrefix+'",
+			"click",
+			"\\",
+			"'+classPrefix+'",
+			"sliderContainer",
+			"$sliderContainer",
+			"_$sliderContainer",
+			"img",
+			"_$slides",
+			"3076923076923px",
+			"	}",
+			"seccion",
+			"markIn",
+			"LETTER",
+			"upp",
+			"\"[",
+			"_getTextNodes",
+			"TODO",
+			"notFixed",
+			"TODO",
+			"273161",
+			"LA|",
+			"_setStatus",
+			"erratapath",
+			"errataBox",
+			"errataCorrection",
+			"ErrataDetails",
+			"errataDetails",
+			"ErrataForm",
+			"errataForm",
+			"errataTitle",
+			"status",
+			"timeo",
+			"_timeOut",
+			"console",
+			"TODO",
+			"showErrataBox",
+			"TODO",
+			"show('",
+			"adiv",
+			"path",
+			"elementpath",
+			"path",
+			"wrap",
+			"TODO",
+			"_ns",
+			"_jsns",
+			"\"#com-estudiocaravana-errata-",
+			"hide",
+			"com-estudiocaravana-errata-status",
+			"show",
+			"sent",
+			"sending",
+			"TODO",
+			"showErrataBox",
+			"_getElementPath",
+			"console",
+			"pluginDirname",
+			"_dirname",
+			"TODO",
+			"hl_twitter_wi",
+			"before_",
+			"before_tu"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"visibleSlides",
+			"startPosContainer",
+			"initialPosContainer",
+			"_options.movingSlides",
+			"movingSlides",
+			"_options",
+			"that._options",
+			"_options",
+			"that.$slider",
+			"slideTransition",
+			"showNextSlide",
+			"Previous slide",
+			"Next slide",
+			"this.$slider",
+			"$slider",
+			"responSlider-",
+			"",
+			"responSlider-",
+			"slider",
+			"that.$sliderContainer",
+			"$sliderContainer",
+			"$slides",
+			"active",
+			"Box",
+			"box",
+			"Box",
+			"box",
+			"Box",
+			"box",
+			"Box",
+			"correction",
+			"Details",
+			"details",
+			"Form",
+			"form",
+			"title",
+			"_timeout",
+			"_showErrataBox",
+			"_nsid",
+			"_ns",
+			"_jsns+\"",
+			"rootDirPath",
+			"_rootDirPath"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "responSlider.js",
+					"settings":
+					{
+						"buffer_size": 5083,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3809,
+								3809
+							]
+						],
+						"settings":
+						{
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1878.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "examples/example.html",
+					"settings":
+					{
+						"buffer_size": 5300,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5014,
+								5014
+							]
+						],
+						"settings":
+						{
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1562.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "responSlider.css",
+					"settings":
+					{
+						"buffer_size": 479,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								289,
+								289
+							]
+						],
+						"settings":
+						{
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 27.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.sftp":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 245.0,
+	"status_bar_visible": true
+}
