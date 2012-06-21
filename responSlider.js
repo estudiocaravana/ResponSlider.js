@@ -182,8 +182,7 @@ ResponSlider = function( slider, userOptions){
 	_initEffects();
 
 	if (_options.verticallyCentered){
-		_verticalCenterImages();
-		$(window).resize(_verticalCenterImages);
+		$(window).load(_verticalCenterImages).resize(_verticalCenterImages);
 	}	
 
 	$(_options.previousSlideAction).click(function(ev){ ev.preventDefault(); that.slideTransition(false)});

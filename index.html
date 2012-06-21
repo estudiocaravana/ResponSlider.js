@@ -26,7 +26,8 @@
       }
 
       .mySlider{
-        height: 500px;
+        height: 400px;
+        margin: 20px;
       }
 
       .responSlider-slide{
@@ -54,47 +55,108 @@
     <div class="container">
 
       <div class="hero-unit">
-        <h1>ResponSlider.js examples</h1>
-        <p>Check out our brand new Responsive Slider JavaScript Library!</p>
+        <h1>ResponSlider.js showcase</h1>
+        <p>Here are some examples where you can see how our brand-new Responsive Slider works.</p>
       </div>
 
       <div class="row">
-        <div class="span6">
+        <div class="span12">
           <h2>Example 1</h2>
-          <p></p>
-          <pre class="prettyprint linenums:1">
-var responSlider = new ResponSlider("#slider", {
+          <div class="row">
+            <div class="span4">          
+              <p>Let's build a simple slider with 3 visible slides, and 1 moving slide every time we click on a <i>previous</i> or <i>next</i> button. Here's the code:</p>
+            </div>
+            <div class="span8">
+              <pre class="prettyprint linenums:1">
+new ResponSlider("#slider", {
   movingSlides: 1,
   visibleSlides: 3,
   previousSlideAction: "#previousSlide",    
   nextSlideAction: "#nextSlide"   
-});</pre>
+});</pre> 
+            </div>       
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="span12">
+          <p>Here's the actual slider:</p>
           <div class="btn-group">
             <a class="btn" id="previousSlide" href="#">Previous slide</a>
             <a class="btn" id="nextSlide" href="#">Next slide</a>
           </div>
 
           <div id="slider" class="mySlider">
-            <img src="./img/0.jpg">
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_ionaexploringfairwindsbyluisdiazdiaz.jpg">
 
-            <img src="./img/1.jpg">
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_aiguilledumidifairwindsbyluisdiazdiaz.jpg">
 
-            <img src="./img/2.jpg">
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_fishermanfairwindsbyluisdiazdiaz.jpg">
 
-            <img src="./img/3.jpg">
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_hangedclothesfairwindsbyluisdiazdiaz.jpg">
 
-            <img src="./img/4.jpg">
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_aureliefairwindsbyluisdiazdiaz.jpg"> 
 
-            <img src="./img/5.jpg">
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_agustinafairwindsbyluisdiazdiaz.jpg">
 
-            <img src="./img/6.jpg"> 
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_seat600fairwindsbyluisdiazdiaz.jpg">
+          </div>
+
+          <p>Resize your browser window so you can see how the slider adatps to its container width.</p>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="span12">
+          <h2>Example 2</h2>
+          <div class="row">
+            <div class="span4">          
+              <p>Now, we can create a slider with 2 visible slides, that moves 2 slides on every click. 
+                Slides should be horizontally and vertically centered.</p>
+            </div>
+            <div class="span8">
+              <pre class="prettyprint linenums:1">
+new ResponSlider("#slider2", {
+  movingSlides: 2,
+  visibleSlides: 2,
+  previousSlideAction: "#previousSlide2",    
+  nextSlideAction: "#nextSlide2",
+  horizontallyCentered: true,
+  verticallyCentered: true   
+});</pre> 
+            </div>       
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="span12">          
+          <div class="btn-group">
+            <a class="btn" id="previousSlide2" href="#">Previous slide</a>
+            <a class="btn" id="nextSlide2" href="#">Next slide</a>
+          </div>
+
+          <div id="slider2" class="mySlider">
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_ionaexploringfairwindsbyluisdiazdiaz.jpg">
+
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_aiguilledumidifairwindsbyluisdiazdiaz.jpg">
+
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_fishermanfairwindsbyluisdiazdiaz.jpg">
+
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_hangedclothesfairwindsbyluisdiazdiaz.jpg">
+
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_aureliefairwindsbyluisdiazdiaz.jpg"> 
+
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_agustinafairwindsbyluisdiazdiaz.jpg">
+
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_seat600fairwindsbyluisdiazdiaz.jpg">
+          </div>
+
+          <p>If you resize your browser window, you can see that images always stay in the center, even if they are taller than the slider height</p>
+          
+        </div>
+      </div>
+      
 
       <br>
 
@@ -127,11 +189,20 @@ var responSlider = new ResponSlider("#slider", {
     <script type="text/javascript" src="bootstrap/js/prettify/prettify.js"></script>    
     <script type="text/javascript">
 
-      var responSlider = new ResponSlider("#slider", {
+      new ResponSlider("#slider", {
         movingSlides: 1,
         visibleSlides: 3,
         previousSlideAction: "#previousSlide",    
         nextSlideAction: "#nextSlide"   
+      }); 
+
+      new ResponSlider("#slider2", {
+        movingSlides: 2,
+        visibleSlides: 2,
+        previousSlideAction: "#previousSlide2",    
+        nextSlideAction: "#nextSlide2",
+        horizontallyCentered: true,
+        verticallyCentered: true
       }); 
     </script>
   </body>
