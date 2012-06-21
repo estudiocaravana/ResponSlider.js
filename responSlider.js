@@ -145,7 +145,7 @@ ResponSlider = function( slider, userOptions){
 		}
 	}
 
-	function _verticalCenterImages(){
+	function _verticalCenterSlide(){
 		that.$slider.find('.responSlider-verticallyCentered').map(function(){
 			var $this = $(this);
 			$this.css({
@@ -182,8 +182,7 @@ ResponSlider = function( slider, userOptions){
 	_initEffects();
 
 	if (_options.verticallyCentered){
-		_verticalCenterImages();
-		$(window).resize(_verticalCenterImages);
+		$(window).load(_verticalCenterSlide).resize(_verticalCenterSlide);
 	}	
 
 	$(_options.previousSlideAction).click(function(ev){ ev.preventDefault(); that.slideTransition(false)});
