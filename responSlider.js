@@ -106,7 +106,7 @@ ResponSlider = function( slider, userOptions){
 					});
 				}
 			);				
-			
+
 			_$sliderContainer.animate({
 				left: endPosContainer + "px"
 			}, _options.transitionTime
@@ -135,7 +135,7 @@ ResponSlider = function( slider, userOptions){
 			}, _options.transitionTime / 2,
 			function(){
 				showNextSlide ? _$sliderContainer.append($selectedSlides) : _$sliderContainer.prepend($selectedSlides);
-				
+
 				_$sliderContainer.animate({
 					opacity: originalOpacity
 				}, _options.transitionTime / 2, function(){
@@ -145,7 +145,7 @@ ResponSlider = function( slider, userOptions){
 		}
 	}
 
-	function _verticalCenterImages(){
+	function _verticalCenterSlide(){
 		that.$slider.find('.responSlider-verticallyCentered').map(function(){
 			var $this = $(this);
 			$this.css({
@@ -182,10 +182,10 @@ ResponSlider = function( slider, userOptions){
 	_initEffects();
 
 	if (_options.verticallyCentered){
-		$(window).load(_verticalCenterImages).resize(_verticalCenterImages);
+		$(window).load(_verticalCenterSlide).resize(_verticalCenterSlide);
 	}	
 
 	$(_options.previousSlideAction).click(function(ev){ ev.preventDefault(); that.slideTransition(false)});
 	$(_options.nextSlideAction).click(function(ev){ ev.preventDefault(); that.slideTransition(true)});
-	
+
 };

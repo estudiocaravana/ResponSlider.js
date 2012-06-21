@@ -42,12 +42,13 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">ResponSlider.js</a>          
+          <a class="brand" href="#">ResponSlider.js</a>       
+          <ul class="nav">
+            <li><a href="https://github.com/estudiocaravana/ResponSlider.js">GitHub</a></li>
+          </ul>   
+          <ul class="nav pull-right">
+            <li><a href="http://estudiocaravana.com">by estudiocaravana</a></li>
+          </ul>          
         </div>
       </div>
     </div>
@@ -56,31 +57,68 @@
 
       <div class="hero-unit">
         <h1>ResponSlider.js showcase</h1>
-        <p>Here are some examples where you can see how our brand-new Responsive Slider works.</p>
+        <p>Here are some examples where you can see how this brand-new responsive slider works.</p>
       </div>
 
       <div class="row">
         <div class="span12">
-          <h2>Example 1</h2>
+          <div class="page-header">
+            <h1>Example 1 <small>Hello-world slider</small></h1>
+          </div>
           <div class="row">
             <div class="span4">          
-              <p>Let's build a simple slider with 3 visible slides, and 1 moving slide every time we click on a <i>previous</i> or <i>next</i> button. Here's the code:</p>
+              <p>Let's build a simple 400px-tall slider with 3 visible slides. Every time we click on a <i>Previous slide</i> or <i>Next slide</i> button, it will just move 1 slide. </p>              
             </div>
             <div class="span8">
+              <p>Here's the code for the <code>&lt;head&gt;</code> section</p>
               <pre class="prettyprint linenums:1">
-new ResponSlider("#slider", {
-  movingSlides: 1,
-  visibleSlides: 3,
-  previousSlideAction: "#previousSlide",    
-  nextSlideAction: "#nextSlide"   
-});</pre> 
+&lt;link href="responSlider.css" rel="stylesheet" type="text/css"&gt;
+&lt;style type="text/css"&gt;                              
+  .mySlider{
+    height: 400px;
+    margin: 20px;
+  }
+&lt;/style&gt;
+</pre>
+
+<p>We should place our slider's <code>&lt;div&gt;</code> anywhere within the <code>&lt;body&gt;</code></p>
+
+<pre class="prettyprint linenums:1">
+&lt;div id="slider" class="mySlider"&gt;
+
+  &lt;img src="..."&gt;
+
+  &lt;img src="..."&gt;
+
+  ...
+
+&lt;/div&gt;
+</pre>
+
+<p>Near the bottom of the <code>&lt;body&gt;</code>, we include our scripts</p>
+
+<pre class="prettyprint linenums:1">&lt;script type="text/javascript" 
+  src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="responSlider.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+  new ResponSlider(
+    "#slider", 
+    {
+      movingSlides: 1,
+      visibleSlides: 3,
+      previousSlideAction: "#previousSlide",    
+      nextSlideAction: "#nextSlide"   
+    }
+  );
+&lt;/script&gt;
+</pre> 
             </div>       
           </div>
         </div>
       </div>
       <div class="row">
         <div class="span12">
-          <p>Here's the actual slider:</p>
+          <p>And here's the actual slider</p>
           <div class="btn-group">
             <a class="btn" id="previousSlide" href="#">Previous slide</a>
             <a class="btn" id="nextSlide" href="#">Next slide</a>
@@ -109,22 +147,28 @@ new ResponSlider("#slider", {
 
       <div class="row">
         <div class="span12">
-          <h2>Example 2</h2>
+          <div class="page-header">
+            <h1>Example 2 <small>Multi-movement, centered slider</small></h1>
+          </div>
           <div class="row">
             <div class="span4">          
               <p>Now, we can create a slider with 2 visible slides, that moves 2 slides on every click. 
                 Slides should be horizontally and vertically centered.</p>
             </div>
             <div class="span8">
+              <p>With the same <code>&lt;style&gt;</code> and <i>slider</i>, here's the JavaScript code:</p>
               <pre class="prettyprint linenums:1">
-new ResponSlider("#slider2", {
-  movingSlides: 2,
-  visibleSlides: 2,
-  previousSlideAction: "#previousSlide2",    
-  nextSlideAction: "#nextSlide2",
-  horizontallyCentered: true,
-  verticallyCentered: true   
-});</pre> 
+new ResponSlider(
+  "#slider2", 
+  {
+    movingSlides: 2,
+    visibleSlides: 2,
+    previousSlideAction: "#previousSlide2",    
+    nextSlideAction: "#nextSlide2",
+    horizontallyCentered: true,
+    verticallyCentered: true   
+  }
+);</pre> 
             </div>       
           </div>
         </div>
@@ -152,18 +196,209 @@ new ResponSlider("#slider2", {
             <img src="http://luisdiazdiaz.com/files/gimgs/74_seat600fairwindsbyluisdiazdiaz.jpg">
           </div>
 
-          <p>If you resize your browser window, you can see that images always stay in the center, even if they are taller than the slider height</p>
+          <p>If you resize your browser window, you can see that images always stay in the center, even if they are taller than the slider</p>
           
         </div>
       </div>
-      
-
-      <br>
 
       <div class="row">
         <div class="span12">
-          <h2>On Github</h2>
-          <p class="view"><a href="https://github.com/estudiocaravana/ResponSlider.js">View the Project on GitHub <small>estudiocaravana/ResponSlider.js</small></a></p>
+          <div class="page-header">
+            <h1>Example 3 <small>Media-query-dependant slider</small></h1>
+          </div>
+          <div class="row">
+            <div class="span4">          
+              <p>What about a media-query-dependant slider? Let's say we want a 3-slide slider if the viewport is above 768px width, but if it's below, it should transform into a 1-slide slider.</p>
+            </div>
+            <div class="span8">
+              <pre class="prettyprint linenums:1">
+new ResponSlider(
+  "#slider3", 
+  {
+    movingSlides: 3,
+    previousSlideAction: "#previousSlide3",    
+    nextSlideAction: "#nextSlide3",
+    horizontallyCentered: true,
+    verticallyCentered: true,
+    mediaQueries: {
+      "@media screen and (min-width: 768px)": 3,
+      "@media screen and (max-width: 768px)": 1,
+    }
+  }
+);</pre> 
+            </div>       
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span12">          
+          <div class="btn-group">
+            <a class="btn" id="previousSlide3" href="#">Previous slide</a>
+            <a class="btn" id="nextSlide3" href="#">Next slide</a>
+          </div>
+
+          <div id="slider3" class="mySlider">
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_ionaexploringfairwindsbyluisdiazdiaz.jpg">
+
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_aiguilledumidifairwindsbyluisdiazdiaz.jpg">
+
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_fishermanfairwindsbyluisdiazdiaz.jpg">
+
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_hangedclothesfairwindsbyluisdiazdiaz.jpg">
+
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_aureliefairwindsbyluisdiazdiaz.jpg"> 
+
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_agustinafairwindsbyluisdiazdiaz.jpg">
+
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_seat600fairwindsbyluisdiazdiaz.jpg">
+          </div>
+
+          <p>Resize your browser window and see how the slider changes its behaviour!</p>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="span12">
+          <div class="page-header">
+            <h1>Example 4 <small>Transition effects</small></h1>
+          </div>
+          <div class="row">
+            <div class="span4">          
+              <p>And... yes! You can change the way slides move.</p>
+              <p>So far, these are all the transition effects we've implemented:</p>
+              <ul>
+                <li>slide (default)</li>
+                <li>fade</li>
+                <li>none</li>
+              </ul>
+            </div>
+            <div class="span8">
+              <pre class="prettyprint linenums:1">
+new ResponSlider(
+  "#slider4", 
+  {
+    effect: "fade",
+    previousSlideAction: "#previousSlide4",    
+    nextSlideAction: "#nextSlide4",
+    horizontallyCentered: true,
+    verticallyCentered: true
+  }
+);</pre> 
+            </div>       
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span12">          
+          <div class="btn-group">
+            <a class="btn" id="previousSlide4" href="#">Previous slide</a>
+            <a class="btn" id="nextSlide4" href="#">Next slide</a>
+          </div>
+
+          <div id="slider4" class="mySlider">
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_ionaexploringfairwindsbyluisdiazdiaz.jpg">
+
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_aiguilledumidifairwindsbyluisdiazdiaz.jpg">
+
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_fishermanfairwindsbyluisdiazdiaz.jpg">
+
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_hangedclothesfairwindsbyluisdiazdiaz.jpg">
+
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_aureliefairwindsbyluisdiazdiaz.jpg"> 
+
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_agustinafairwindsbyluisdiazdiaz.jpg">
+
+            <img src="http://luisdiazdiaz.com/files/gimgs/74_seat600fairwindsbyluisdiazdiaz.jpg">
+          </div>          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="span12">
+          <div class="page-header">
+            <h1>Example 5 <small>Text slider</small></h1>
+          </div>
+          <div class="row">
+            <div class="span4">          
+              <p>You can place whatever you want inside the slider. For example, a <i>Lorem-impsum</i> slider! </p>              
+            </div>
+            <div class="span8">
+              <pre class="prettyprint linenums:1">
+&lt;div id="slider5" class="mySlider"&gt;
+
+  &lt;p&gt;Lorem ipsum...&lt;/p&gt;
+
+  &lt;p&gt;Eos vocibus...&lt;/p&gt;
+
+  ...
+
+&lt;/div&gt;</pre>
+              <pre class="prettyprint linenums:1">
+new ResponSlider(
+  "#slider5", 
+  {
+    visibleSlides: 3,
+    previousSlideAction: "#previousSlide5",    
+    nextSlideAction: "#nextSlide5"
+  }
+);</pre> 
+            </div>       
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span12">          
+          <div class="btn-group">
+            <a class="btn" id="previousSlide5" href="#">Previous slide</a>
+            <a class="btn" id="nextSlide5" href="#">Next slide</a>
+          </div>
+
+          <div id="slider5" class="mySlider">
+            <p>
+              Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id. Quo mundi lobortis reformidans eu, legimus senserit definiebas an eos. Eu sit tincidunt incorrupte definitionem, vis mutat affert percipit cu, eirmod consectetuer signiferumque eu per. In usu latine equidem dolores. Quo no falli viris intellegam, ut fugit veritus placerat per. Ius id vidit volumus mandamus, vide veritus democritum te nec, ei eos debet libris consulatu. No mei ferri graeco dicunt, ad cum veri accommodare. Sed at malis omnesque delicata, usu et iusto zzril meliore. Dicunt maiorum eloquentiam cum cu, sit summo dolor essent te. Ne quodsi nusquam legendos has, ea dicit voluptua eloquentiam pro, ad sit quas qualisque.
+            </p>
+            <p>
+              Eos vocibus deserunt quaestio ei. Blandit incorrupte quaerendum in quo, nibh impedit id vis, vel no nullam semper audiam. Ei populo graeci consulatu mei, has ea stet modus phaedrum. Inani oblique ne has, duo et veritus detraxit. Tota ludus oratio ea mel, offendit persequeris ei vim. Eos dicat oratio partem ut, id cum ignota senserit intellegat. Sit inani ubique graecis ad, quando graecis liberavisse et cum, dicit option eruditi at duo. Homero salutatus suscipiantur eum id, tamquam voluptaria expetendis ad sed, nobis feugiat similique usu ex. Eum hinc argumentum te, no sit percipit adversarium, ne qui feugiat persecuti. Odio omnes scripserit ad est, ut vidit lorem maiestatis his, putent mandamus gloriatur ne pro. Oratio iriure rationibus ne his, ad est corrumpit splendide. 
+            </p>
+            <p>
+              Ad duo appareat moderatius, ei falli tollit denique eos. Dicant evertitur mei in, ne his deserunt perpetua sententiae, ea sea omnes similique vituperatoribus. Ex mel errem intellegebat comprehensam, vel ad tantas antiopam delicatissimi, tota ferri affert eu nec. Legere expetenda pertinacia ne pro, et pro impetus persius assueverit. Ea mei nullam facete, omnis oratio offendit ius cu. Doming takimata repudiandae usu an, mei dicant takimata id, pri eleifend inimicus euripidis at. His vero singulis ea, quem euripidis abhorreant mei ut, et populo iriure vix. Usu ludus affert voluptaria ei, vix ea error definitiones, movet fastidii signiferumque in qui. 
+            </p>
+            <p>
+              Vis prodesset adolescens adipiscing te, usu mazim perfecto recteque at, assum putant erroribus mea in. Vel facete imperdiet id, cum an libris luptatum perfecto, vel fabellas inciderint ut. Veri facete debitis ea vis, ut eos oratio erroribus. Sint facete perfecto no vel, vim id omnium insolens. Vel dolores perfecto pertinacia ut, te mel meis ullum dicam, eos assum facilis corpora in. Mea te unum viderer dolores, nostrum detracto nec in, vis no partem definiebas constituam. Dicant utinam philosophia has cu, hendrerit prodesset at nam, eos an bonorum dissentiet. Has ad placerat intellegam consectetuer, no adipisci mandamus senserit pro, torquatos similique percipitur est ex. Pro ex putant deleniti repudiare, vel an aperiam sensibus suavitate. Ad vel epicurei convenire, ea soluta aliquid deserunt ius, pri in errem putant feugiat. Sed iusto nihil populo an, ex pro novum homero cotidieque. 
+            </p>
+            <p>
+              Te utamur civibus eleifend qui, nam ei brute doming concludaturque, modo aliquam facilisi nec no. Vidisse maiestatis constituam eu his, esse pertinacia intellegam ius cu. Eos ei odio veniam, eu sumo altera adipisci eam, mea audiam prodesset persequeris ea. Ad vitae dictas vituperata sed, eum posse labore postulant id. Te eligendi principes dignissim sit, te vel dicant officiis repudiandae. Id vel sensibus honestatis omittantur, vel cu nobis commune patrioque. In accusata definiebas qui, id tale malorum dolorem sed, solum clita phaedrum ne his. Eos mutat ullum forensibus ex, wisi perfecto urbanitas cu eam, no vis dicunt impetus. Assum novum in pri, vix an suavitate moderatius, id has reformidans referrentur. 
+            </p>
+            <p>
+              Elit inciderint omittantur duo ut, dicit democritum signiferumque eu est, ad suscipit delectus mandamus duo. An harum equidem maiestatis nec. At has veri feugait placerat, in semper offendit praesent his. Omnium impetus facilis sed at, ex viris tincidunt ius. Unum eirmod dignissim id quo. Sit te atomorum quaerendum neglegentur, his primis tamquam et. Eu quo quot veri alienum, ea eos nullam luptatum accusamus. Ea mel causae phaedrum reprimique, at vidisse dolores ocurreret nam.              
+            </p>
+          </div>          
+        </div>
+      </div>
+
+      
+
+      <div class="row">
+        <div class="span12">
+          <div class="page-header">
+            <h1>Credits</h1>
+          </div>
+          <ul>
+            <li>We're using <a href="http://twitter.github.com/bootstrap">Twitter Bootstrap</a> to structure our examples.</li>
+            <li> <a href="http://luisdiazdiaz.com">Luis Díaz Díaz</a> took the pictures we are using here. Check out his awesome <a href="http://luisdiazdiaz.com">work!</a></li>
+          </ul>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="span12">
+          <div class="page-header">
+            <h1>On Github</h1>
+          </div>
+          <p>Do you want to contribute to the project? Have you found any bug? Would you like ResponSlider.js to have any other cool feature?</p>
+          <p>Come and <a href="https://github.com/estudiocaravana/ResponSlider.js">view the Project on GitHub <small>estudiocaravana/ResponSlider.js</small></a></p>
           <ul>
             <li><a href="https://github.com/estudiocaravana/ResponSlider.js/zipball/master">Download <strong>ZIP File</strong></a></li>
             <li><a href="https://github.com/estudiocaravana/ResponSlider.js/tarball/master">Download <strong>TAR Ball</strong></a></li>
@@ -171,8 +406,6 @@ new ResponSlider("#slider2", {
           </ul>
         </div>
       </div>
-
-      <br>
 
       <hr>
 
@@ -203,6 +436,32 @@ new ResponSlider("#slider2", {
         nextSlideAction: "#nextSlide2",
         horizontallyCentered: true,
         verticallyCentered: true
+      });
+
+      new ResponSlider("#slider3", {
+        movingSlides: 3,
+        previousSlideAction: "#previousSlide3",    
+        nextSlideAction: "#nextSlide3",
+        horizontallyCentered: true,
+        verticallyCentered: true,
+        mediaQueries: {
+          "@media screen and (min-width: 768px)": 3,
+          "@media screen and (max-width: 768px)": 1,
+        }
+      });
+
+      new ResponSlider("#slider4", {
+        effect: "fade",
+        previousSlideAction: "#previousSlide4",    
+        nextSlideAction: "#nextSlide4",
+        horizontallyCentered: true,
+        verticallyCentered: true
+      });
+
+      new ResponSlider("#slider5", {
+        visibleSlides: 3,
+        previousSlideAction: "#previousSlide5",    
+        nextSlideAction: "#nextSlide5"
       }); 
     </script>
   </body>
