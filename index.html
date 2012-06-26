@@ -31,7 +31,9 @@
       }
 
       .responSlider-slide{
-        box-sizing: border-box;
+           -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
         padding: 20px;
       }
     </style>
@@ -74,9 +76,13 @@
               <pre class="prettyprint linenums:1">
 &lt;link href="responSlider.css" rel="stylesheet" type="text/css"&gt;
 &lt;style type="text/css"&gt;                              
-  .mySlider{
+  .mySlider {
     height: 400px;
     margin: 20px;
+  }
+
+  .responsive-slide {
+    padding: 20px;
   }
 &lt;/style&gt;
 </pre>
@@ -95,11 +101,12 @@
 &lt;/div&gt;
 </pre>
 
-<p>Near the bottom of the <code>&lt;body&gt;</code>, we include our scripts</p>
+<p>We include our scripts near the bottom of the <code>&lt;body&gt;</code></p>
 
 <pre class="prettyprint linenums:1">&lt;script type="text/javascript" 
   src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript" src="responSlider.js"&gt;&lt;/script&gt;
+
 &lt;script type="text/javascript"&gt;
   new ResponSlider(
     "#slider", 
@@ -125,22 +132,22 @@
           </div>
 
           <div id="slider" class="mySlider">
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_ionaexploringfairwindsbyluisdiazdiaz.jpg">
+            <img src="img/74_ionaexploringfairwindsbyluisdiazdiaz.jpg">
 
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_aiguilledumidifairwindsbyluisdiazdiaz.jpg">
+            <img src="img/74_aiguilledumidifairwindsbyluisdiazdiaz.jpg">
 
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_fishermanfairwindsbyluisdiazdiaz.jpg">
+            <img src="img/74_fishermanfairwindsbyluisdiazdiaz.jpg">
 
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_hangedclothesfairwindsbyluisdiazdiaz.jpg">
+            <img src="img/74_hangedclothesfairwindsbyluisdiazdiaz.jpg">
 
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_aureliefairwindsbyluisdiazdiaz.jpg"> 
+            <img src="img/74_aureliefairwindsbyluisdiazdiaz.jpg"> 
 
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_agustinafairwindsbyluisdiazdiaz.jpg">
+            <img src="img/74_agustinafairwindsbyluisdiazdiaz.jpg">
 
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_seat600fairwindsbyluisdiazdiaz.jpg">
+            <img src="img/74_seat600fairwindsbyluisdiazdiaz.jpg">
           </div>
 
-          <p>Resize your browser window so you can see how the slider adatps to its container width.</p>
+          <p>Resize your browser window so you can see how the slider adapts itself to its container's width.</p>
 
         </div>
       </div>
@@ -152,11 +159,11 @@
           </div>
           <div class="row">
             <div class="span4">          
-              <p>Now, we can create a slider with 2 visible slides, that moves 2 slides on every click. 
-                Slides should be horizontally and vertically centered.</p>
+              <p>Now, we'll create a slider with 2 visible slides, that moves 2 slides on every click. 
+                These slides should be horizontally and vertically centered.</p>
             </div>
             <div class="span8">
-              <p>With the same <code>&lt;style&gt;</code> and <i>slider</i>, here's the JavaScript code:</p>
+              <p>We just have to change the JavaScript code a little bit:</p>
               <pre class="prettyprint linenums:1">
 new ResponSlider(
   "#slider2", 
@@ -181,19 +188,19 @@ new ResponSlider(
           </div>
 
           <div id="slider2" class="mySlider">
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_ionaexploringfairwindsbyluisdiazdiaz.jpg">
+            <img src="img/74_ionaexploringfairwindsbyluisdiazdiaz.jpg">
 
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_aiguilledumidifairwindsbyluisdiazdiaz.jpg">
+            <img src="img/74_aiguilledumidifairwindsbyluisdiazdiaz.jpg">
 
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_fishermanfairwindsbyluisdiazdiaz.jpg">
+            <img src="img/74_fishermanfairwindsbyluisdiazdiaz.jpg">
 
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_hangedclothesfairwindsbyluisdiazdiaz.jpg">
+            <img src="img/74_hangedclothesfairwindsbyluisdiazdiaz.jpg">
 
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_aureliefairwindsbyluisdiazdiaz.jpg"> 
+            <img src="img/74_aureliefairwindsbyluisdiazdiaz.jpg"> 
 
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_agustinafairwindsbyluisdiazdiaz.jpg">
+            <img src="img/74_agustinafairwindsbyluisdiazdiaz.jpg">
 
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_seat600fairwindsbyluisdiazdiaz.jpg">
+            <img src="img/74_seat600fairwindsbyluisdiazdiaz.jpg">
           </div>
 
           <p>If you resize your browser window, you can see that images always stay in the center, even if they are taller than the slider</p>
@@ -208,7 +215,7 @@ new ResponSlider(
           </div>
           <div class="row">
             <div class="span4">          
-              <p>What about a media-query-dependant slider? Let's say we want a 3-slide slider if the viewport is above 768px width, but if it's below, it should transform into a 1-slide slider.</p>
+              <p>What about a media-query-dependant slider? Let's say we want a 3-slide slider if the viewport is over 768px width, but if it's smaller, it should transform into a 1-slide slider.</p>
             </div>
             <div class="span8">
               <pre class="prettyprint linenums:1">
@@ -238,22 +245,22 @@ new ResponSlider(
           </div>
 
           <div id="slider3" class="mySlider">
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_ionaexploringfairwindsbyluisdiazdiaz.jpg">
+            <img src="img/74_ionaexploringfairwindsbyluisdiazdiaz.jpg">
 
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_aiguilledumidifairwindsbyluisdiazdiaz.jpg">
+            <img src="img/74_aiguilledumidifairwindsbyluisdiazdiaz.jpg">
 
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_fishermanfairwindsbyluisdiazdiaz.jpg">
+            <img src="img/74_fishermanfairwindsbyluisdiazdiaz.jpg">
 
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_hangedclothesfairwindsbyluisdiazdiaz.jpg">
+            <img src="img/74_hangedclothesfairwindsbyluisdiazdiaz.jpg">
 
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_aureliefairwindsbyluisdiazdiaz.jpg"> 
+            <img src="img/74_aureliefairwindsbyluisdiazdiaz.jpg"> 
 
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_agustinafairwindsbyluisdiazdiaz.jpg">
+            <img src="img/74_agustinafairwindsbyluisdiazdiaz.jpg">
 
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_seat600fairwindsbyluisdiazdiaz.jpg">
+            <img src="img/74_seat600fairwindsbyluisdiazdiaz.jpg">
           </div>
 
-          <p>Resize your browser window and see how the slider changes its behaviour!</p>
+          <p>Resize your browser window and see how the slider transforms!</p>
           
         </div>
       </div>
@@ -265,7 +272,7 @@ new ResponSlider(
           </div>
           <div class="row">
             <div class="span4">          
-              <p>And... yes! You can change the way slides move.</p>
+              <p>And, of course, you can change the way slides move.</p>
               <p>So far, these are all the transition effects we've implemented:</p>
               <ul>
                 <li>slide (default)</li>
@@ -297,19 +304,19 @@ new ResponSlider(
           </div>
 
           <div id="slider4" class="mySlider">
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_ionaexploringfairwindsbyluisdiazdiaz.jpg">
+            <img src="img/74_ionaexploringfairwindsbyluisdiazdiaz.jpg">
 
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_aiguilledumidifairwindsbyluisdiazdiaz.jpg">
+            <img src="img/74_aiguilledumidifairwindsbyluisdiazdiaz.jpg">
 
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_fishermanfairwindsbyluisdiazdiaz.jpg">
+            <img src="img/74_fishermanfairwindsbyluisdiazdiaz.jpg">
 
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_hangedclothesfairwindsbyluisdiazdiaz.jpg">
+            <img src="img/74_hangedclothesfairwindsbyluisdiazdiaz.jpg">
 
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_aureliefairwindsbyluisdiazdiaz.jpg"> 
+            <img src="img/74_aureliefairwindsbyluisdiazdiaz.jpg"> 
 
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_agustinafairwindsbyluisdiazdiaz.jpg">
+            <img src="img/74_agustinafairwindsbyluisdiazdiaz.jpg">
 
-            <img src="http://luisdiazdiaz.com/files/gimgs/74_seat600fairwindsbyluisdiazdiaz.jpg">
+            <img src="img/74_seat600fairwindsbyluisdiazdiaz.jpg">
           </div>          
         </div>
       </div>
@@ -321,7 +328,7 @@ new ResponSlider(
           </div>
           <div class="row">
             <div class="span4">          
-              <p>You can place whatever you want inside the slider. For example, a <i>Lorem-impsum</i> slider! </p>              
+              <p>You can place whatever you want inside the slider. For example, let's make a <i>Lorem-impsum</i> slider! </p>              
             </div>
             <div class="span8">
               <pre class="prettyprint linenums:1">
@@ -385,8 +392,8 @@ new ResponSlider(
             <h1>Credits</h1>
           </div>
           <ul>
-            <li>We're using <a href="http://twitter.github.com/bootstrap">Twitter Bootstrap</a> to structure our examples.</li>
-            <li> <a href="http://luisdiazdiaz.com">Luis Díaz Díaz</a> took the pictures we are using here. Check out his awesome <a href="http://luisdiazdiaz.com">work!</a></li>
+            <li>We're using <a href="http://twitter.github.com/bootstrap">Twitter Bootstrap</a> to style our examples.</li>
+            <li>All the pictures were taken by <a href="http://luisdiazdiaz.com">Luis Díaz Díaz</a>. Check out his <a href="http://luisdiazdiaz.com">awesome work</a>!</li>
           </ul>
           
         </div>
@@ -399,11 +406,6 @@ new ResponSlider(
           </div>
           <p>Do you want to contribute to the project? Have you found any bug? Would you like ResponSlider.js to have any other cool feature?</p>
           <p>Come and <a href="https://github.com/estudiocaravana/ResponSlider.js">view the Project on GitHub <small>estudiocaravana/ResponSlider.js</small></a></p>
-          <ul>
-            <li><a href="https://github.com/estudiocaravana/ResponSlider.js/zipball/master">Download <strong>ZIP File</strong></a></li>
-            <li><a href="https://github.com/estudiocaravana/ResponSlider.js/tarball/master">Download <strong>TAR Ball</strong></a></li>
-            <li><a href="https://github.com/estudiocaravana/ResponSlider.js">View On <strong>GitHub</strong></a></li>
-          </ul>
         </div>
       </div>
 
@@ -418,8 +420,8 @@ new ResponSlider(
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>    
-    <script type="text/javascript" src="responSlider.js"></script>
     <script type="text/javascript" src="bootstrap/js/prettify/prettify.js"></script>    
+    <script type="text/javascript" src="responSlider.js"></script>
     <script type="text/javascript">
 
       new ResponSlider("#slider", {
