@@ -1,191 +1,206 @@
-ResponSlider = function( slider, userOptions){
+(function( $ ){
 
+  $.fn.responSlider = function( options ) {
 	/*
-	 * Auxiliar properties
-	 */
-	var that = this;		
+	* Auxiliar properties
+	*/
+    var that = this;
 
-	/*
-	 * Private properties
-	 */
-	var _$sliderContainer, 
-		_effects = {},		
-		_options = 
-			{
-				visibleSlides: 1,
-				movingSlides: 1,
-				effect: 'slide',
-				previousSlideAction: null,
-				nextSlideAction: null,
-				mediaQueries: null,
-				horizontallyCentered: false,
-				verticallyCentered: false,
-				transitionTime: 800
-			};
+    /*
+    * Default options
+    */
+    var _options = {
+        visibleSlides: 1,
+        movingSlides: 1,
+        effect: 'slide',
+        previousSlideAction: null,
+        nextSlideAction: null,
+        mediaQueries: null,
+        horizontallyCentered: false,
+        verticallyCentered: false,
+        transitionTime: 800
+      };
 
-	/*
-	 * Public properties
-	 */
-	this.$slider = $(slider);
+    if ( options ) {
+      $.extend( _options, options );
+    }
+        
+    $('head').append('<style> \
+      .responSlider-slider{ \
+          overflow: hidden; \
+      } \
+      \
+      .responSlider-sliderContainer{ \
+        height: 100%; \
+        max-width: 100%; \
+        position: relative; \
+      } \
+      \
+      .responSlider-slide{ \
+        float: left; \
+        height: 100%; \
+        overflow: hidden; \
+        position: relative; \
+      } \
+      \
+      .responSlider-slide > img { \
+        max-width: 100%; \
+        height: auto; \
+      } \
+      \
+      .responSlider-horizontallyCentered { \
+        margin-left: auto; \
+        margin-right: auto; \
+      } \
+      \
+      .responSlider-verticallyCentered { \
+        display: block; \
+        margin: 0px auto; \
+        position: relative; \
+        top: 50%; \
+      } \
+    </style>');
+    
+    var _effects = {};
 
-	/*
-	 * Private methods
-	 */
-	function _initSlider(){
-		var slideSelector,
-			sliderChilden,
-			sliderContainerID,
-			sliderSelector,
-			slideWidthStyle;
+    _effects.none = function($slider, showNextSlide, movingSlides){
+      var $sliderContainer = $($slider.children().get(0)),
+        $slides       = $sliderContainer.children(),
+        $selectedSlides   =   showNextSlide ? $slides.slice(0,movingSlides) : $slides.slice(-1 * movingSlides);
 
-		that.$slider.addClass('responSlider-slider');
+      showNextSlide ? $sliderContainer.append($selectedSlides) : $sliderContainer.prepend($selectedSlides);
+    };
 
-		sliderChilden = that.$slider.children();
-		if (_options.horizontallyCentered){
-			sliderChilden.addClass("responSlider-horizontallyCentered");
-		}		
-		if (_options.verticallyCentered){
-			sliderChilden.addClass("responSlider-verticallyCentered");
-		}
+    _effects.slide = function($slider, showNextSlide, movingSlides){
+      var $sliderContainer = $($slider.children().get(0)),
+        $slides = $sliderContainer.children(),
+        horizontalOffset  =   $slides.outerWidth(true),
+        $selectedSlides   =   showNextSlide ? $slides.slice(0,movingSlides) : $slides.slice(-1 * movingSlides),
+        startPosContainer   =   showNextSlide ? (horizontalOffset * movingSlides) : 0,
+        endPosContainer   =   (!showNextSlide) ? (horizontalOffset * movingSlides) : 0,
+        maxZIndex     = parseInt($slides.css("z-index"),10);
 
-		sliderContainerID = 'responSlider-sliderContainer-'+$('.responSlider-sliderContainer').length;
+      if (showNextSlide){
+        $sliderContainer.append($selectedSlides);
+      }
 
-		sliderChilden
-			.wrapAll('<div id="'+sliderContainerID+'" class="responSlider-sliderContainer" />')		
-			.wrap('<div class="responSlider-slide" />');
+      $sliderContainer.css("left", startPosContainer + "px");
 
-		_$sliderContainer = that.$slider.find('.responSlider-sliderContainer');
+      $selectedSlides.each(
+        function(i){
+          $(this).css({
+            position: "absolute",
+            left: (horizontalOffset * (i - movingSlides)) + "px",
+            "z-index": maxZIndex + 1
+          });
+        }
+      );
 
-		slideSelector = '#'+sliderContainerID+' > .responSlider-slide';
+      $sliderContainer.animate({
+        left: endPosContainer + "px"},
+        _options.transitionTime,
+        function(){
+        if (!showNextSlide){
+          $sliderContainer.prepend($selectedSlides);
+        }
+        $sliderContainer.css("left", "");
+        $selectedSlides.css({
+          position: "",
+          left: "",
+          "z-index": ""
+        });
+      });
+    };
 
-		slideWidthStyle = '<style type="text/css">';
+    _effects.fade = function($slider, showNextSlide, movingSlides){
+      var $sliderContainer = $($slider.children().get(0)),
+        $slides       = $sliderContainer.children(),
+        $selectedSlides   =   showNextSlide ? $slides.slice(0,movingSlides) : $slides.slice(-1 * movingSlides),
+        originalOpacity   = $sliderContainer.css("opacity");
 
-		if (_options.mediaQueries){		
-			for (var mq in _options.mediaQueries){
-				slideWidthStyle += mq + '{ '+slideSelector+' { width: '+(100/_options.mediaQueries[mq])+'% } }';
-			}
-		}
-		else{
-			slideWidthStyle += slideSelector+' { width: '+(100/_options.visibleSlides)+'% }';
-		}
+      originalOpacity = !!(originalOpacity) ? originalOpacity : 1;
 
-		slideWidthStyle += '</style>';
+      $sliderContainer.animate({
+        opacity: 0
+      }, _options.transitionTime / 2,
+      function(){
+        showNextSlide ? $sliderContainer.append($selectedSlides) : $sliderContainer.prepend($selectedSlides);
 
-		$("head").append(slideWidthStyle);
-	}
+        $sliderContainer.animate({
+          opacity: originalOpacity
+        }, _options.transitionTime / 2, function(){
+          $sliderContainer.attr("style","");
+        });
+      });
+    };
 
-	function _initEffects(){
-		_effects.none = function(showNextSlide, movingSlides){
-			var $slides 			=	_$sliderContainer.children(),
-				$selectedSlides		= 	showNextSlide ? $slides.slice(0,movingSlides) : $slides.slice(-1 * movingSlides);
-
-			showNextSlide ? _$sliderContainer.append($selectedSlides) : _$sliderContainer.prepend($selectedSlides);
-		}
-
-
-		_effects.slide = function(showNextSlide, movingSlides){
-			var $slides 			=	_$sliderContainer.children(),
-				horizontalOffset 	= 	$slides.outerWidth(true),
-				$selectedSlides		= 	showNextSlide ? $slides.slice(0,movingSlides) : $slides.slice(-1 * movingSlides),
-				startPosContainer 	= 	showNextSlide ? (horizontalOffset * movingSlides) : 0,
-				endPosContainer		= 	(!showNextSlide) ? (horizontalOffset * movingSlides) : 0,
-				maxZIndex			=	parseInt($slides.css("z-index"));
-
-			if (showNextSlide){
-				_$sliderContainer.append($selectedSlides);		
-			}
-
-			_$sliderContainer.css("left", startPosContainer + "px");
-
-			$selectedSlides.each( 
-				function(i){
-					$(this).css({
-						position: "absolute",
-						left: (horizontalOffset * (i - movingSlides)) + "px",
-						"z-index": maxZIndex + 1
-					});
-				}
-			);				
-			
-			_$sliderContainer.animate({
-				left: endPosContainer + "px"
-			}, _options.transitionTime
-			,function(){
-				if (!showNextSlide){
-					_$sliderContainer.prepend($selectedSlides);
-				}
-				_$sliderContainer.css("left", "");
-				$selectedSlides.css({
-					position: "",
-					left: "",
-					"z-index": ""
+    if (_options.verticallyCentered){
+		var verticalCenterSlide = function(){
+			that.find('.responSlider-verticallyCentered').map(function(){
+				var $this = $(this);
+				$this.css({
+					"margin-top" : ($this.outerHeight() / 2) * (-1)
 				});
 			});
-		}
+		};
 
-		_effects.fade = function(showNextSlide, movingSlides){
-			var $slides 			=	_$sliderContainer.children(),
-				$selectedSlides		= 	showNextSlide ? $slides.slice(0,movingSlides) : $slides.slice(-1 * movingSlides),
-				originalOpacity		=	_$sliderContainer.css("opacity");
+      $(window).load(verticalCenterSlide).resize(verticalCenterSlide);
+    }
+    
+    return this.each(function(){
+      var $this = $(this),
+          slideSelector,
+          sliderChilden,
+          sliderContainerID,
+          slideWidthStyle;
 
-			originalOpacity	= !!(originalOpacity) ? originalOpacity : 1;
+      $this.addClass('responSlider-slider');
 
-			_$sliderContainer.animate({
-				opacity: 0
-			}, _options.transitionTime / 2,
-			function(){
-				showNextSlide ? _$sliderContainer.append($selectedSlides) : _$sliderContainer.prepend($selectedSlides);
-				
-				_$sliderContainer.animate({
-					opacity: originalOpacity
-				}, _options.transitionTime / 2, function(){
-					_$sliderContainer.attr("style","");
-				});
-			});
-		}
-	}
+      sliderChilden = $this.children();
+      if (_options.horizontallyCentered){
+        sliderChilden.addClass("responSlider-horizontallyCentered");
+      }
+      if (_options.verticallyCentered){
+        sliderChilden.addClass("responSlider-verticallyCentered");
+      }
 
-	function _verticalCenterSlide(){
-		that.$slider.find('.responSlider-verticallyCentered').map(function(){
-			var $this = $(this);
-			$this.css({
-				"margin-top" : ($this.outerHeight() / 2) * (-1)
-			});
-		});
-	}
+      sliderContainerID = 'responSlider-sliderContainer-'+ $('.responSlider-sliderContainer').length;
 
-	/*
-	 * Public methods
-	 */
-	this.slideTransition = function( showNextSlide ){		
-		if (_$sliderContainer.filter(":animated").length == 0){
+      sliderChilden
+        .wrapAll('<div id="'+sliderContainerID+'" class="responSlider-sliderContainer" />')
+        .wrap('<div class="responSlider-slide" />');
 
-			var visibleSlides = Math.ceil(_$sliderContainer.outerWidth() / _$sliderContainer.find('.responSlider-slide').outerWidth());
+      slideSelector = '#'+sliderContainerID+' > .responSlider-slide';
 
-			_effects[_options.effect](showNextSlide, Math.min(_options.movingSlides, visibleSlides));
-		}
-	}
+      slideWidthStyle = '<style type="text/css">';
 
+      if (_options.mediaQueries){
+        for (var mq in _options.mediaQueries){
+          slideWidthStyle += mq + '{ '+slideSelector+' { width: '+(100/_options.mediaQueries[mq])+'% } }';
+        }
+      }
+      else{
+        slideWidthStyle += slideSelector+' { width: '+(100/_options.visibleSlides)+'% }';
+      }
 
-	/*
-	 * Slider initialization
-	 */
-	if (!!userOptions){
-		for (var op in _options){
-			if (!!userOptions[op]){
-				_options[op] = userOptions[op];
-			}
-		}	
-	}
+      slideWidthStyle += '</style>';
 
-	_initSlider();
-	_initEffects();
+      $('head').append(slideWidthStyle);
 
-	if (_options.verticallyCentered){
-		$(window).load(_verticalCenterSlide).resize(_verticalCenterSlide);
-	}	
+      $this.bind('responSlider-slideTransition', function(e, showNextSlide ){
+        var $slider = $this;
+        if ($slider.filter(":animated").length === 0){
+            var visibleSlides = Math.ceil($slider.outerWidth() / $slider.find('.responSlider-slide').outerWidth());
 
-	$(_options.previousSlideAction).click(function(ev){ ev.preventDefault(); that.slideTransition(false)});
-	$(_options.nextSlideAction).click(function(ev){ ev.preventDefault(); that.slideTransition(true)});
-	
-};
+            _effects[_options.effect]($slider, showNextSlide, Math.min(_options.movingSlides, visibleSlides));
+          }
+        }
+      );
+
+      $(_options.previousSlideAction).click(function(ev){ ev.preventDefault(); $this.trigger('responSlider-slideTransition',[false]);});
+      $(_options.nextSlideAction).click(function(ev){ ev.preventDefault(); $this.trigger('responSlider-slideTransition',[true]);});
+      
+    });
+  
+  };
+})( jQuery );
