@@ -64,7 +64,7 @@
     var _effects = {};
 
     _effects.none = function($slider, showNextSlide, movingSlides){
-      var $sliderContainer = $($slider.children().get(0)),
+      var $sliderContainer = $($slider.children('.responSlider-sliderContainer').get(0)),
         $slides       = $sliderContainer.children(),
         $selectedSlides   =   showNextSlide ? $slides.slice(0,movingSlides) : $slides.slice(-1 * movingSlides);
 
@@ -72,7 +72,7 @@
     };
 
     _effects.slide = function($slider, showNextSlide, movingSlides){
-      var $sliderContainer = $($slider.children().get(0)),
+      var $sliderContainer = $($slider.children('.responSlider-sliderContainer').get(0)),
         $slides = $sliderContainer.children(),
         horizontalOffset  =   $slides.outerWidth(true),
         $selectedSlides   =   showNextSlide ? $slides.slice(0,movingSlides) : $slides.slice(-1 * movingSlides),
@@ -113,7 +113,7 @@
     };
 
     _effects.fade = function($slider, showNextSlide, movingSlides){
-      var $sliderContainer = $($slider.children().get(0)),
+      var $sliderContainer = $($slider.children('.responSlider-sliderContainer').get(0)),
         $slides       = $sliderContainer.children(),
         $selectedSlides   =   showNextSlide ? $slides.slice(0,movingSlides) : $slides.slice(-1 * movingSlides),
         originalOpacity   = $sliderContainer.css("opacity");
@@ -189,7 +189,7 @@
 
       $this.bind('responSlider-slideTransition', function(e, showNextSlide ){
         var $slider = $this;
-        if ($slider.filter(":animated").length === 0){
+        if ($slider.children(".responSlider-sliderContainer").filter(":animated").length === 0){
             var visibleSlides = Math.ceil($slider.outerWidth() / $slider.find('.responSlider-slide').outerWidth());
 
             _effects[_options.effect]($slider, showNextSlide, Math.min(_options.movingSlides, visibleSlides));
