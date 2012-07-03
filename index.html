@@ -18,7 +18,6 @@
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css">
     <link href="bootstrap/js/prettify/prettify.css" rel="stylesheet" type="text/css">
 
-    <link href="responSlider.css" rel="stylesheet" type="text/css">
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -74,7 +73,6 @@
             <div class="span8">
               <p>Here's the code for the <code>&lt;head&gt;</code> section</p>
               <pre class="prettyprint linenums:1">
-&lt;link href="responSlider.css" rel="stylesheet" type="text/css"&gt;
 &lt;style type="text/css"&gt;                              
   .mySlider {
     height: 400px;
@@ -108,15 +106,12 @@
 &lt;script type="text/javascript" src="responSlider.js"&gt;&lt;/script&gt;
 
 &lt;script type="text/javascript"&gt;
-  new ResponSlider(
-    "#slider", 
-    {
+  $("#slider").responSlider({
       movingSlides: 1,
       visibleSlides: 3,
       previousSlideAction: "#previousSlide",    
       nextSlideAction: "#nextSlide"   
-    }
-  );
+  });
 &lt;/script&gt;
 </pre> 
             </div>       
@@ -165,17 +160,14 @@
             <div class="span8">
               <p>We just have to change the JavaScript code a little bit:</p>
               <pre class="prettyprint linenums:1">
-new ResponSlider(
-  "#slider2", 
-  {
+$("#slider2").responSlider({
     movingSlides: 2,
     visibleSlides: 2,
     previousSlideAction: "#previousSlide2",    
     nextSlideAction: "#nextSlide2",
     horizontallyCentered: true,
     verticallyCentered: true   
-  }
-);</pre> 
+});</pre> 
             </div>       
           </div>
         </div>
@@ -219,9 +211,7 @@ new ResponSlider(
             </div>
             <div class="span8">
               <pre class="prettyprint linenums:1">
-new ResponSlider(
-  "#slider3", 
-  {
+$("#slider3").responSlider({
     movingSlides: 3,
     previousSlideAction: "#previousSlide3",    
     nextSlideAction: "#nextSlide3",
@@ -231,8 +221,7 @@ new ResponSlider(
       "@media screen and (min-width: 768px)": 3,
       "@media screen and (max-width: 768px)": 1,
     }
-  }
-);</pre> 
+});</pre> 
             </div>       
           </div>
         </div>
@@ -282,16 +271,13 @@ new ResponSlider(
             </div>
             <div class="span8">
               <pre class="prettyprint linenums:1">
-new ResponSlider(
-  "#slider4", 
-  {
+$("#slider4").responSlider({
     effect: "fade",
     previousSlideAction: "#previousSlide4",    
     nextSlideAction: "#nextSlide4",
     horizontallyCentered: true,
     verticallyCentered: true
-  }
-);</pre> 
+});</pre> 
             </div>       
           </div>
         </div>
@@ -342,14 +328,11 @@ new ResponSlider(
 
 &lt;/div&gt;</pre>
               <pre class="prettyprint linenums:1">
-new ResponSlider(
-  "#slider5", 
-  {
+$("#slider5").responSlider({
     visibleSlides: 3,
     previousSlideAction: "#previousSlide5",    
     nextSlideAction: "#nextSlide5"
-  }
-);</pre> 
+});</pre> 
             </div>       
           </div>
         </div>
@@ -424,14 +407,14 @@ new ResponSlider(
     <script type="text/javascript" src="responSlider.js"></script>
     <script type="text/javascript">
 
-      new ResponSlider("#slider", {
+      $("#slider").responSlider({
         movingSlides: 1,
         visibleSlides: 3,
         previousSlideAction: "#previousSlide",    
         nextSlideAction: "#nextSlide"   
       }); 
 
-      new ResponSlider("#slider2", {
+      $("#slider2").responSlider({
         movingSlides: 2,
         visibleSlides: 2,
         previousSlideAction: "#previousSlide2",    
@@ -440,7 +423,7 @@ new ResponSlider(
         verticallyCentered: true
       });
 
-      new ResponSlider("#slider3", {
+      $("#slider3").responSlider({
         movingSlides: 3,
         previousSlideAction: "#previousSlide3",    
         nextSlideAction: "#nextSlide3",
@@ -452,7 +435,7 @@ new ResponSlider(
         }
       });
 
-      new ResponSlider("#slider4", {
+      $("#slider4").responSlider({
         effect: "fade",
         previousSlideAction: "#previousSlide4",    
         nextSlideAction: "#nextSlide4",
@@ -460,7 +443,7 @@ new ResponSlider(
         verticallyCentered: true
       });
 
-      new ResponSlider("#slider5", {
+      $("#slider5").responSlider({
         visibleSlides: 3,
         previousSlideAction: "#previousSlide5",    
         nextSlideAction: "#nextSlide5"
